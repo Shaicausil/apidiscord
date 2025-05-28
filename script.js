@@ -18,7 +18,7 @@ async function sendToGemini() {
   const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
 
-  const promptParaIA = `${inputText} Ahora responde normalmente, pero al final responde solo con "ENVÍA A DISCORD: SÍ" o "ENVÍA A DISCORD: NO" para indicar si debo enviar esto a Discord.
+  const promptParaIA = `${inputText} No respondas normalmente, responde solo con "ENVÍA A DISCORD: SÍ" o "ENVÍA A DISCORD: NO" para indicar si debo enviar esto a Discord.
   `.trim();
 
   const requestBody = {
