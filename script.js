@@ -17,7 +17,7 @@ async function sendToGemini() {
 
   const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
 
-
+  // Agregamos la instrucción para que Gemini nos diga si se debe enviar a Discord
   const promptParaIA = `${inputText} Ahora responde normalmente, pero al final responde solo con "ENVÍA A DISCORD: SÍ" o "ENVÍA A DISCORD: NO" para indicar si debo enviar esto a Discord.
   `.trim();
 
@@ -46,8 +46,10 @@ async function sendToGemini() {
     const fullText = data?.candidates?.[0]?.content?.parts?.[0]?.text;
 
     if (fullText && fullText.trim() !== "") {
-        responseContainer.textContent = fullText;
+      // Mostrar la respuesta de Gemini
+      responseContainer.textContent = fullText;
 
+      // Revisar si la respuesta contiene "ENVÍA A DISCORD: SÍ"
       if (fullText.includes("ENVÍA A DISCORD: SÍ")) {
         discordMessage.textContent = "MENSAJE ENVIADO AL DISCORD";
       } else {
